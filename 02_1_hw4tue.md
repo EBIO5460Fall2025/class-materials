@@ -21,8 +21,8 @@ Begin setting up a computing environment. We'll deal with R this week and set up
    [skills_tutorials/git02_your_repo.md](skills_tutorials/git02_your_repo.md). 
 
 4. Watch the video lecture on "What is an algorithm?"
-   * [01_3_slides_what_is_an_algorithm.pdf](01_3_slides_what_is_an_algorithm.pdf)
-   * [01_3_video_what_is_an_algorithm.md](01_3_video_what_is_an_algorithm.md) - 8 mins
+   * [02_2_slides_what_is_an_algorithm.pdf](02_2_slides_what_is_an_algorithm.pdf)
+   * [02_2_video_what_is_an_algorithm.md](02_2_video_what_is_an_algorithm.md) - 8 mins
 
 5. If you're new to R or want a refresher (not a bad idea even if you're a pro and especially if you've only ever used the "tidyverse" dialect), run through the basics of R base
    * [skills_tutorials/rbase01_basics.R](skills_tutorials/rbase01_basics.R)
