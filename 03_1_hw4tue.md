@@ -1,8 +1,8 @@
 ### Week 2 Homework
 
-Before class on Tuesday, please at least watch the video lecture in (2). I will continue from there.
+Before class on Tuesday, you need to at least watch the video lecture in (2). I will continue from there.
 
-You need to learn the Git skills to submit the assignment.
+The Git skills in (1) are needed to submit the assignment.
 
 
 
@@ -14,10 +14,12 @@ In [git03_basics.md](skills_tutorials/git03_basics.md) learn the basics of how G
 
 #### 2. Watch the video lecture: "Selection structures" part 2
 
-* [02_2_slides_selection_structures_p2.pdf](02_2_slides_selection_structures_p2.pdf)
-* [02_2_video_selection_structures_p2.md](02_2_video_selection_structures_p2.md)
+* [03_2_slides_selection_structures_p2.pdf](03_2_slides_selection_structures_p2.pdf)
+* [03_2_video_selection_structures_p2.md](03_2_video_selection_structures_p2.md)
 
 This finishes selection structures as a topic.
+
+
 
 
 #### 3. Programming problems on selection structures
@@ -32,9 +34,9 @@ git push
 
 * For Python, follow the [PEP 8 official Python style guide](https://peps.python.org/pep-0008/).
 
-* At the very least, these two style guides should give you an appreciation that coding style is quite arbitrary.
+* At the very least, these two style guides should give you an appreciation that coding style is quite arbitrary!
 
-You must not use any R or Python packages/libraries for these problems!
+You must not use any R or Python packages/libraries for these problems, just straight up structured code from scratch.
 
 
 ... TBA
