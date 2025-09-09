@@ -22,7 +22,7 @@ Since this semester is a major revision with new content, this is only roughly h
   * Reading: How algorithms unite data science
 
 
-## Week 2 - 3
+## Week 2 - 4
 
 * Version control workflow
 
@@ -57,7 +57,7 @@ Since this semester is a major revision with new content, this is only roughly h
   * Coding: Repetition structures problem set
 
 
-## Week 4 - 5
+## Week 5 - 6
 
 * The art of modeling
   * Formulating and writing a model
@@ -80,7 +80,7 @@ Since this semester is a major revision with new content, this is only roughly h
   * Coding: Simulate an ecological or evolutionary process
 
 
-## Week 6 - 7
+## Week 7 - 8
 
 * Training algorithms
   * Vary model parameters to minimize distance from data
@@ -107,7 +107,7 @@ Since this semester is a major revision with new content, this is only roughly h
   * Coding: Descent training algorithm for mechanistic population growth model
 
 
-## Week 8 - 9
+## Week 9 - 10
 
 * Inference algorithms intro
   * Inference problems/goals
@@ -141,7 +141,7 @@ Since this semester is a major revision with new content, this is only roughly h
   * Coding: Bootstrap algorithms
 
 
-## Week 10
+## Week 11
 
 * Visualization
   * Theory
@@ -166,7 +166,7 @@ Since this semester is a major revision with new content, this is only roughly h
   * Coding: Likelihood intervals for the linear model
 
 
-## Week 11 - 12
+## Week 12 - 13
 
 * Bayesian inference algorithms
   * Posterior sampling
@@ -203,8 +203,8 @@ Since this semester is a major revision with new content, this is only roughly h
   * Coding: Rosenbluth (Metropolis) algorithm
 
 
-## Week 13 - 14
-  
+## Week 14 - 15
+
 * Model checking
   * Evaluating model assumptions
   * Assessing training robustness
