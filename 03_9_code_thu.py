@@ -36,7 +36,7 @@ print(N)
 
 N = 2
 g = 0
-while N <= 1e9 and g <=100:
+while N <= 1e9 and g <= 100:
     N = N * 2
     g = g + 1
 
