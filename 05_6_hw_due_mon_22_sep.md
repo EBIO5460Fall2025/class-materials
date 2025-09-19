@@ -1,6 +1,42 @@
 # Homework
 
-Questions below. I need to add learning goals etc here. Coming soon.
+
+
+**Due:** Monday 22 Sep 11:59 PM
+
+**Grading criteria:** Answer questions 3 & 4 with a complete attempt. On time submission.
+
+**Format for submitting solutions:**
+
+* Submit only one file of R code for questions 3 and 4.
+* The filenames should be `coding_assignment3.R` but you can add any prefixes to the filename that work with your file naming scheme. 
+
+**Push your file to your GitHub repository**
+
+
+
+## Learning goals
+
+* Practice modeling an ecological data generating process
+* Practice combining repetition and selection structures
+* Use `while` to implement sentinel-controlled repetition
+* Use `for` to implement counter-controlled repetition
+* Develop algorithms to model stochastic ecological processes
+* Convert process descriptions and problem statements into algorithms
+* Practice debugging programs
+* Practice following coding style guides
+
+
+
+For these problems, only use the basic selection and repetition structures covered in class (`while` `for`, `if`, `ifelse` etc) and the basic arithmetic operators (e.g. `+` `-` `/` `*`). Do not use any libraries/packages, or functions other than `runif(1)`, `rep()`, `print()`, `abs()`, `plot()`, `segments()`,  `hist()`.
+
+* For R, follow the class coding style in [ebio5460_r_style_guide.md](skills_tutorials/ebio5460_r_style_guide.md)
+
+
+
+Get help or ask questions on [our Piazza forum]( https://piazza.com/colorado/fall2025/ebio5460002/home)!
+
+
 
 
 ## 1. Skill of the week, git amend, .gitignore, Git GUI
@@ -18,9 +54,39 @@ Let me know how the class is going for you so far and provide any feedback or id
    * https://cuboulder.qualtrics.com/jfe/form/SV_3mHygwu7alfirGK 1-3 mins
 
 
+
 ## 3. Time to move to the edge
 
-Extending the Paramecium movement example, if the arena ends at (-15, 15) how long until an individual gets to the edge? Plot a histogram that shows the distribution of times. A large number of replicates will smooth out the histogram. Assuming we record the time without error, this is the distribution of the data generating process. It's handy to tweak the histogram to show more detail by increasing the number of bins. See the code from class. What makes sense for the bin width? This is an example of a time-to-event distribution.
+Extending the Paramecium movement example from Tuesday's class, if the arena ends at (-15, 15) how long until an individual gets to the edge? Plot a histogram that shows the distribution of times. A large number of replicates will smooth out the histogram. Assuming we record the time without error, this is the distribution of the data generating process. It's handy to tweak the histogram to show more detail by increasing the number of bins. See the code from class. What makes sense for the bin width? This is an example of a time-to-event distribution.
+
+
+
+### Tips
+
+* Start by coding the algorithm for one replicate simulation
+* Check your algorithm by carefully stepping through it
+* Add a plot to visualize movement as another check (see below)
+* Then add a `for` repetition structure to conduct repeated simulations
+
+
+
+### Visualizing the simulation
+
+One simple plot we could use here is time (y-axis) versus x (x-axis), or axes reversed if you prefer to emphasize time. But we don't know how long the simulation will go for each time. So, if we want to keep the simulated data to plot at the end, we don't know how large a vector to initialize. There are a few solutions to this problem, some that work well, and others that can greatly slow down the algorithm. A simple approach is to build the plot piece by piece as we go. This can't be done with ggplot (requires a completed data frame), so we'll use base R.
+
+Start by initializing a blank plot (you might need to adjust the axis limits):
+
+```R
+plot(NA, NA, xlim=c(-15,15), ylim=c(0,250), xlab="x", ylab="t")
+```
+
+Then, at the end of each repetition through the while loop, draw the step that was made:
+
+```R
+segments(x_prev, t_prev, x, t)
+```
+
+where `x_prev` is the x position on the previous repetition at time `t_prev`, and `x`, and `t` are the current position and time. Store the current position `x` into the variable `x_prev` just before exiting the loop so that it's available to use in the next repetition.
 
 
 
@@ -34,10 +100,10 @@ Imagine now that we have a squirrel moving around its home range looking for nut
 
 The algorithm will be very similar to the Paramecium example, except now there are two dimensions, x and y. The two parameters that determine movement are:
 
-p_move = 0.8
-dt = 1 / 6
+* p_move = 0.8
+* dt = 1 / 6
 
-Time is in minutes. So these parameters say there is a 0.8 probability of moving in 10 seconds.
+Time is in minutes. These parameters say there is a 0.8 probability of moving in 10 seconds.
 
 Place a nut randomly within the range like this (the nut could be anywhere within a grid cell, not necessarily at the center of a grid cell):
 
@@ -53,20 +119,26 @@ x_dev <- abs(nut_x - x)
 y_dev <- abs(nut_y - y)
 ```
 
-If both of these are less than 0.5, the nut is in the squirrel's grid cell.
+If both of these are less than 0.5, the nut is in the squirrel's current grid cell.
 
-The data questions:
+
+
+### The data questions
 
 * How long until the squirrel finds the nut?
 * What is the distribution of times (the data generating distribution)?
    * The nut should be placed randomly at a new location each replicate simulation
 
-Tips:
+
+
+### Tips
 
 * Start by coding the algorithm for one replicate of the search
 * Start by modeling movement only
 * Check your algorithm by carefully stepping through it
-* Add a plot to visualize movement as another check
+* Add a plot to visualize movement as another check (this time plotting in x, y instead of x, t)
 * Then, once that's working, add the nut
 * Then add a `for` repetition structure to conduct repeated simulations
+
+
 
