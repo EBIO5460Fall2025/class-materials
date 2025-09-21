@@ -24,11 +24,12 @@ The official version includes both a CLI ([command line interface](https://en.wi
 On this website there is also a section for third-party GUI clients. You can ignore this section but feel to try some out.
 
 **Windows**\
-The installer will install both git and git-gui. When installing, there will be a bunch of questions. For most, the defaults are good. These three are important:
+The installer will install both git and git-gui. When installing, there will be a bunch of questions. For most, the defaults are good. These four are important:
 
-1) Adjust the name of initial branch name for new repositories: main
-2) Choose default editor - I suggest [nano](https://www.nano-editor.org/), or [notepad++](https://notepad-plus-plus.org/).
-3) Adjust your path environment if necessary: Git from the command line and also from 3rd-party software (this is the default choice). This is important to allow other programs (such as Positron or Rstudio) to find Git.
+1) Choose to setup context menu items
+2) Adjust the name of initial branch name for new repositories: main
+3) Choose default editor - I suggest [nano](https://www.nano-editor.org/), or [notepad++](https://notepad-plus-plus.org/).
+4) Adjust your path environment if necessary: Git from the command line and also from 3rd-party software (this is the default choice). This is important to allow other programs (such as Positron or Rstudio) to find Git.
 
 **Mac**\
 Best to install via homebrew.\

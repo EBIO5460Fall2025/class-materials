@@ -13,7 +13,8 @@ Begin setting up a computing environment. We'll deal with R this week and set up
    * IDE: integrated development environment
    * https://positron.posit.co/
    * Positron is new but is undoubtedly the future. It has great integration for multiple programming languages and is optimized for data science. It's based on VSCode but brings the best features of RStudio to both Python and R.
-
+   * Windows: during installation select `add "open with positron action" to context menus`
+   
 3. Get set up with Git and Github. Follow the instructions in
    [skills_tutorials/git01_setup.md](skills_tutorials/git01_setup.md)
    
