@@ -60,8 +60,32 @@ z = x + y
 print(z)
 
 
+# To do element by element math, we need a traditional for structure:
 
-# A list is from a broader category of objects known as sequences
+x = [2] * 10
+y = [8] * 10
+
+z = [None] * 10
+for i in range(10):
+    z[i] = x[i] + y[i]
+print(z)
+
+# or the compact list comprehension equivalent
+
+z = [x[i] + y[i] for i in range(10)]
+print(z)
+
+# or the Pythonic approach is
+
+z = [a + b for a, b in zip(x, y)]
+print(z)
+
+# zip(x,y) is an iterable that iterates over tuple pairs
+
+list(zip(x, y))  # tuple pairs
+
+
+# A list is from a broader category of objects known as sequences:
 # lists, tuples (immutable lists), strings
 # Operators for these have the same behavior
 # e.g. strings
@@ -80,8 +104,8 @@ print(my_favorite_things)
 # Strings (a sequence type) are iterable
 
 rainbow = "My little pony"
-for character in rainbow:
-    print(character)
+for s in rainbow:
+    print(s)
 
 
 # Keeping results in lists
@@ -96,7 +120,7 @@ for i in range(10):
 results
 
 # Appending a list in Python costs little in memory allocation and time, so the
-# following is the usual way
+# following is the Pythonic way
 
 # (This contrasts with R, where appending a list has large speed costs)
 
@@ -133,26 +157,47 @@ print(b)
 # This is because a and b refer to the same object in memory
 # a and b are **bound** to the same object
 
+
 # e.g. 2. An object that references another
 
 # Define two lists
+
 x = ["g", 42.0, "pony"]
 y = list(range(10, -1, -2))
 
 # Define a third list consisting of the previous two
+
 z = [x, y]
 print(z)
 
 # But z is actually a list of references to the objects x and y. If we change x
 # or y in any way, the change is also in z.
+
 x[2] = "unicorn"
 print(z)
 
 # However, if we reassign x, z still references the object before the
 # reassignment.
+
 x = [2, 4]
 print(z)
 
 # The object that x previously referred to still exists (with a reference ID).
 # It just no longer has a name. That name has been **bound** to a new object. It
 # will continue to exist as long as it is referred to by any other object.
+
+# To make copies of the lists
+
+w = [x.copy(), y.copy()]
+print(w)
+
+
+# But even this only copies the outer lists. Any nested objects inside it are
+# still not copied. To copy the full hieararchy we need:
+
+import copy
+
+v = copy.deepcopy([x, y])
+print(v)
+
+# The lists in the e.g. above are not nested, so this was not necessary here.
