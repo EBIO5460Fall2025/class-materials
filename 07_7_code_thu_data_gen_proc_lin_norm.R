@@ -1,4 +1,5 @@
 # Data generating process for a descriptive model
+
 # Linear normal model
 
 # Linear model skeleton
@@ -8,7 +9,7 @@ lin_skel <- function(b_0, b_1, x) {
     return(y)
 }
 
-# Intialize parameters
+# Initialize parameters
 
 b_0 <- 1
 b_1 <- 2
@@ -27,7 +28,7 @@ x <- seq(0, 100, by=5)
 y <- lin_skel(b_0, b_1, x)
 plot(x, y)
 
-# or random x values ... but remember we are assuming that x is not measured
+# or random x values ... but remember we're assuming that x is not measured
 # with error, so this is modeling random known values of x and the outcome of y
 # is still deterministic, so the plot is a perfect straight line.
 
@@ -39,7 +40,8 @@ plot(x, y)
 # and there was no observation error. To model a data generating process we need
 # to add stochastic components to the model.
 
-# First model the full step-by-step algorithm.
+
+# The data story
 
 # The basic data story of the descriptive model is that there is some underlying
 # deterministic biological component that determines the pattern but mixed in
@@ -52,6 +54,9 @@ plot(x, y)
 # error-prone recordings of them (e.g. miscounts, wrong species identifications,
 # unobserved individuals, noisy instruments etc).
 
+# Data generating process for a single observation
+# Step-by-step algorithm
+
 # To illustrate, we can tell this data story for a single observation, with its
 # unique value of x (we are assuming that x is measured without error)
 
@@ -62,7 +67,7 @@ x <- 23.7
 mu <- lin_skel(b_0, b_1, x)
 mu
 
-# Model the biological process error (one value for y drawn from a Normal
+# Model the biological process stochasticity (one value for y drawn from a Normal
 # distribution)
 
 sigma_bio <- 30
@@ -87,17 +92,19 @@ c(deterministic = mu, true_bio = y_bio, observed = y_obs)
 # to get an idea of the variability to expect among realizations. Think of it as
 # imagining what might have happened if the processes were run again.
 
-# This leads to the following general algorithm (pseudocode) for a collection of
-# observations:
+
+# An algorithm for a collection of data points
+
+# Pseudocode
 
 # for each data point (value of x)
 #     start with the deterministic skeleton
-#     model biological process error
+#     model biological process stochasticity
 #     model observation error
 
 # Next, we'll look at several detailed but equivalent variations of this
 # algorithm where the deterministic skeleton is linear and the process and
-# observation error are modeled as Normal distributions.
+# observation stochasticity are modeled as Normal distributions.
 
 
 # Algorithm 1
@@ -119,6 +126,8 @@ lin_norm_dgp_alg1 <- function(b_0, b_1, x, sigma_bio, sigma_obs) {
 }
 
 # Use the function
+b_0 <- 1
+b_1 <- 2
 sigma_bio <- 30
 sigma_obs <- 20
 #x <- seq(0, 100, by=5)  #perhaps a designed experiment or survey
@@ -145,6 +154,12 @@ lin_norm_dgp_alg2 <- function(b_0, b_1, x, sigma_bio, sigma_obs) {
 }
 
 # Use this function
+
+b_0 <- 1
+b_1 <- 2
+sigma_bio <- 30
+sigma_obs <- 20
+x <- runif(21, 0, 100)
 y <- lin_norm_dgp_alg2(b_0, b_1, x, sigma_bio, sigma_obs)
 plot(x, y)
 
@@ -178,27 +193,40 @@ sigma <- sqrt(sigma_bio^2 + sigma_obs^2) #variances (sigma^2) are additive
 y <- lin_norm_dgp_alg3(b_0, b_1, x, sigma)
 plot(x, y)
 
+# Use this model
+
+b_0 <- 1
+b_1 <- 2
+sigma_bio <- 30
+sigma_obs <- 20
+x <- runif(21, 0, 100)
+
+sigma <- sqrt(sigma_bio^2 + sigma_obs^2)
+y <- lin_norm_dgp_alg3(b_0, b_1, x, sigma)
+plot(x, y)
+
 
 # Finally, that for loop is not very efficient and we can vectorize that step
 # instead.
 
 # Algorithm 4
 
-# Now the mean argument in the rnorm() function is a vector and 1 random draw is
+# The mean argument in the rnorm() function is now a vector and 1 random draw is
 # made for each value of x at its corresponding value of mu, just as in the
-# `for` repetition structure above.
+# `for` repetition structure above in Algorithm 3.
 
-lin_norm_dgp <- function(b_0, b_1, x, sigma) {
+lin_norm_dgp_alg4 <- function(b_0, b_1, x, sigma) {
     n <- length(x)
     mu <- lin_skel(b_0, b_1, x)
-    y <- rnorm(n, mean=mu, sd=sigma)
-    return(y)
+    y_obs <- rnorm(n, mean=mu, sd=sigma)
+    return(y_obs)
 }
 
 # Generate data
 
-y <- lin_norm_dgp(b_0, b_1, x, sigma)
+y <- lin_norm_dgp_alg4(b_0, b_1, x, sigma)
 plot(x, y)
+
 
 # 8 realizations of this process
 # Recall that variation among realizations is entirely due to variation in y.
@@ -206,6 +234,6 @@ plot(x, y)
 
 par(mfrow = c(2,4), mar=c(4,4,0,0.2))
 for ( i in 1:8 ) {
-    y <- lin_norm_dgp(b_0, b_1, x, sigma)
+    y <- lin_norm_dgp_alg4(b_0, b_1, x, sigma)
     plot(x, y)
 }
