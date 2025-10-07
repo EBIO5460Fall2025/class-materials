@@ -20,7 +20,7 @@ An algorithms first perspective, elaborating on previous Thursday's class
 * Libraries, packages, modules, package managers in R, C, Python
 * Linear normal data generating process in Python
 * Using numpy arrays, vectorization, rng for random numbers
-* [08_3_video_libraries_python_linnormDGP.md](08_3_video_libraries_python_linnormDGP.md) (xx mins)
+* [08_3_video_libraries_python_linnormDGP.md](08_3_video_libraries_python_linnormDGP.md) (43 mins)
 * [08_3_slides_libraries_python_linnormDGP.pdf](08_3_slides_libraries_python_linnormDGP.pdf)
 
 #### 4. Install miniconda package manager for Python
