@@ -25,6 +25,6 @@ An algorithms first perspective, elaborating on previous Thursday's class
 
 #### 4. Install miniconda package manager for Python
 
-* Search: miniconda download (should be official anaconda website)
+* Follow the instructions in [install_miniconda.md](tech_setup/install_miniconda.md)
 * Follow previous video to set up a conda environment and install python with numpy and matplotlib
 
