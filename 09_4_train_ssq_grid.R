@@ -93,7 +93,12 @@ mtext("Sum of squares profiles - grid search", outer=TRUE, line=-2.5)
 # Profiles indicate uncertainty (wider = more uncertainty)
 
 # Plot the trained model with the data. Does it make sense?
+par(mfrow=c(1,1))
 plot(mydata$x, mydata$y, ylim=c(0,300))
-xx
-y_pred
-lines
+xx <- 0:25
+y_pred <- lin_skel(opt_pars["b_0"], opt_pars["b_1"], xx)
+lines(xx, y_pred, col="blue")
+
+y_fitted <- lin_skel(opt_pars["b_0"], opt_pars["b_1"], mydata$x)
+points(mydata$x, y_fitted, col="red")
+
