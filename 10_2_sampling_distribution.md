@@ -64,10 +64,10 @@ In any scientific situation, we can never know reality exactly, we can
 only infer it or hope to get closer. However, in a simulation, we can
 know reality because we program it in, so simulation is very useful for
 gaining better intuition about the concept of the sampling distribution.
-So let’s explore the sampling distribution by simulation. We will
-consider two cases, estimating the prevalence of a pathogen in a
-population (below), and an hypothesis test for the slope in simple
-linear regression (see the next installment: `lm_ssq_inference.md`).
+So let’s explore the sampling distribution by simulation. We’ll consider
+two cases, estimating the prevalence of a pathogen in a population
+(below), and an hypothesis test for the slope in simple linear
+regression (see the next installment: `lm_ssq_inference.md`).
 
 ### Pathogen prevalence in a population
 

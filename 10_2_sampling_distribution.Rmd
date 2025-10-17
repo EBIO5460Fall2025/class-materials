@@ -31,7 +31,7 @@ This algorithm implements the concept that the sampling distribution is the expe
 
 ## Simulation for understanding the sampling distribution concept
 
-In any scientific situation, we can never know reality exactly, we can only infer it or hope to get closer. However, in a simulation, we can know reality because we program it in, so simulation is very useful for gaining better intuition about the concept of the sampling distribution. So let's explore the sampling distribution by simulation. We will consider two cases, estimating the prevalence of a pathogen in a population (below), and an hypothesis test for the slope in simple linear regression (see the next installment: `lm_ssq_inference.md`).
+In any scientific situation, we can never know reality exactly, we can only infer it or hope to get closer. However, in a simulation, we can know reality because we program it in, so simulation is very useful for gaining better intuition about the concept of the sampling distribution. So let's explore the sampling distribution by simulation. We'll consider two cases, estimating the prevalence of a pathogen in a population (below), and an hypothesis test for the slope in simple linear regression (see the next installment: `lm_ssq_inference.md`).
 
 ### Pathogen prevalence in a population
 
@@ -123,7 +123,7 @@ This is often abbreviated to something like "there is a 0.95 probability that th
 
 In our example for the pathogen prevalence, how could we construct an interval with these properties? It's worth emphasizing that in any given situation there is not a "correct" approach to constructing an interval. There are usually multiple possible approaches and some are better than others. The best ones are usually informed by statistical theory. I'm going to show an approach here that illustrates the type of reasoning that's often used, although it's not the best for this particular situation. One approach would recognize that the sampling distribution is well-approximated by a Normal distribution. This is because the pathogen prevalence is the result of summing up the number of infected individuals, so the sampling distribution of the prevalence fairly quickly approaches a Normal distribution as the sample size (10 in this case) increases due to the [central limit theorem](https://en.wikipedia.org/wiki/Central_limit_theorem) (see Big Ideas in Data Science). It's not a perfect match (notably, the possible values of the pathogen prevalence are discrete) but it's a very good approximation. Here they are side by side and overlaid:
 
-```{r}
+```{r fig.asp=0.5}
 par(mfrow=c(1,3))
 hist(pathogen_p_imagine_samples, breaks=seq(-0.45, 1.35, 0.1), col="#56B4E9", freq=FALSE,
      xlab="Pathogen prevalence", ylim=c(0,2.7), main="True sampling distribution")
