@@ -10,7 +10,7 @@ Note: The `.md` version of this document is best for viewing on GitHub. See the 
 
 ## The sampling distribution: how frequentists count the ways data could have happened
 
-The sampling distribution is a frequentist conceptualization of our **big idea in data science** of **counting all the ways the data could have happened**. It is the key to understanding frequentist inference. The sampling distribution is the distribution of a sample statistic from repeatedly sampling the population. There are two critical features of this frequentist conceptualization:
+The sampling distribution is a frequentist conceptualization of our **big idea in data science** of **counting all the ways the data could have happened**. It's the key to understanding frequentist inference. The sampling distribution is the distribution of a sample statistic from repeatedly sampling the population. There are two critical features of this frequentist conceptualization:
 
 1. There is a **real entity**, which is called the **population**. Precisely because the population is reality, the characteristics of the population are **not random variables**. They are said to be "fixed". An example of a non-random characteristic of a population might be its mean or its variance or, more completely, its distribution as represented by a histogram that includes every single individual. A summary characteristic of a population is called a **population statistic**, or **parameter**. Examples include the population mean or variance, the slope, $\beta_1$, of $y$ on $x$, or the *t*-statistic, or *F*-statistic. Be careful here to realize we are talking about the true value of these statistics for the **population** not a sample.
 
@@ -52,7 +52,7 @@ n_pop <- length(pathogen)
 n_pop
 ```
 
-This is a population statistic. The prevalence of the pathogen is another characteristic of this population; it is also a population statistic. The pathogen prevalence of the population is
+This is a population statistic. The prevalence of the pathogen is another characteristic of this population; it's also a population statistic. The pathogen prevalence of the population is
 
 ```{r}
 pathogen_p_pop <- sum(pathogen) / n_pop #equivalently mean(pathogen)
@@ -113,13 +113,13 @@ One thing that sometimes confuses people is that we have encountered two differe
 
 ## Frequentist uncertainty: confidence intervals
 
-How can we use this concept of the sampling distribution to judge the reliability of an estimate? Let's consider our one sample of 10 individual birds that we actually took. The pathogen prevalence for this sample happens to lie at 0.2 in this sampling distribution (the dashed black line $\hat{\theta}$ in the figure above). What do we expect about the reliability of the sample prevalence as an estimate $\hat{\theta}$ of the population prevalence $\theta$? To answer that question, frequentists turn to the **reliability of a procedure** for calculating an interval, what they call a **confidence interval**. It is called a confidence interval because it is about the confidence we have in the procedure for calculating the interval.
+How can we use this concept of the sampling distribution to judge the reliability of an estimate? Let's consider our one sample of 10 individual birds that we actually took. The pathogen prevalence for this sample happens to lie at 0.2 in this sampling distribution (the dashed black line $\hat{\theta}$ in the figure above). What do we expect about the reliability of the sample prevalence as an estimate $\hat{\theta}$ of the population prevalence $\theta$? To answer that question, frequentists turn to the **reliability of a procedure** for calculating an interval, what they call a **confidence interval**. It's called a confidence interval because it's about the confidence we have in the procedure for calculating the interval.
 
 A 95% confidence interval is defined as:
 
 > An interval calculated by some procedure that would **contain** (or **cover**) the true population value 95% of the time, **if sampling and calculating an interval were repeated a very large number of times**.
 
-This is often abbreviated to something like "there is a 0.95 probability that the interval contains the true value", which is true only if we keep in mind the precise definition of probability as an imagined repeated procedure. It is common to reword it subtly as "there is a 0.95 probability that the true value is in the interval", which seems the same as the previous abbreviated definition to most people (including me) since if "the interval contains the true value" then "the true value is in the interval". However, it can be argued that once an interval is calculated, since the true value is fixed, the true value is either in the interval or it is not, so the probabilities of being in the interval are respectively 1 when it is in the interval and 0 when it is outside the interval (Pratt 1961). A lot of arguments ensue around these semantics. Nevertheless, the important point is that a confidence interval is about the probability associated with sampling and calculating an interval (i.e. **the procedure**) and not directly about the probability for the value of the statistic or parameter (the pathogen prevalence in this case).
+This is often abbreviated to something like "there is a 0.95 probability that the interval contains the true value", which is true only if we keep in mind the precise definition of probability as an imagined repeated procedure. It's common to reword it subtly as "there is a 0.95 probability that the true value is in the interval", which seems the same as the previous abbreviated definition to most people (including me) since if "the interval contains the true value" then "the true value is in the interval". However, it can be argued that once an interval is calculated, since the true value is fixed, the true value is either in the interval or it is not, so the probabilities of being in the interval are respectively 1 when it is in the interval and 0 when it is outside the interval (Pratt 1961). A lot of arguments ensue around these semantics. Nevertheless, the important point is that a confidence interval is about the probability associated with sampling and calculating an interval (i.e. **the procedure**) and not directly about the probability for the value of the statistic or parameter (the pathogen prevalence in this case).
 
 In our example for the pathogen prevalence, how could we construct an interval with these properties? It's worth emphasizing that in any given situation there is not a "correct" approach to constructing an interval. There are usually multiple possible approaches and some are better than others. The best ones are usually informed by statistical theory. I'm going to show an approach here that illustrates the type of reasoning that's often used, although it's not the best for this particular situation. One approach would recognize that the sampling distribution is well-approximated by a Normal distribution. This is because the pathogen prevalence is the result of summing up the number of infected individuals, so the sampling distribution of the prevalence fairly quickly approaches a Normal distribution as the sample size (10 in this case) increases due to the [central limit theorem](https://en.wikipedia.org/wiki/Central_limit_theorem) (see Big Ideas in Data Science). It's not a perfect match (notably, the possible values of the pathogen prevalence are discrete) but it's a very good approximation. Here they are side by side and overlaid:
 
@@ -207,7 +207,7 @@ in_interval <- pathogen_p_pop > interval[,1] & pathogen_p_pop < interval[,2]
 sum(in_interval) / reps
 ```
 
-which is pretty close to the desired coverage of 0.95 and is indeed a bit conservative since it is greater than 0.95 (i.e. our procedure produces a 95.6% confidence interval). Let's see the first 100 of these intervals compared to the true pathogen prevalence (in blue):
+which is pretty close to the desired coverage of 0.95 and is indeed a bit conservative since it's greater than 0.95 (i.e. our procedure produces a 95.6% confidence interval, which is bit wider than a 95% confidence interval). Let's see the first 100 of these intervals compared to the true pathogen prevalence (in blue):
 
 ```{r}
 nd <- 100 #number of intervals to draw
@@ -224,9 +224,12 @@ Several things are apparent.
 
 1. The location of the intervals varies a lot. Confidence intervals are random variables.
 2. The intervals are of different widths.
-3. As expected, about 5 out of 100 (here 6) of the intervals (orange) don't cover the true value.
+3. As expected, about 5 out of 100 (here 6) of the intervals (orange) don't cover the true value (blue).
 4. The true value is often not near the center of the interval.
 5. Many of the intervals include prevalences that are impossible, either negative, or greater than one. This is a consequence of substituting the Normal distribution for the true sampling distribution.
+
+Finally, a reminder that the above is to demonstrate that any reasonable procedure can be used to construct an interval. The defining feature of a confidence interval is its coverage determined by the coverage algorithm. Our procedure works quite well within the realm we tested it but there are better procedures for constructing intervals for the kind of data presented (binomial proportion).
+
 
 ## Summary
 
@@ -237,7 +240,7 @@ repeat very many times
     calculate the sample statistic
 plot sampling distribution (histogram) of the sample statistic
 ```
-* A confidence interval is:
+* A 95% confidence interval is:
 
 > An interval calculated by some procedure that would **contain** (or **cover**) the true population value 95% of the time, **if sampling and calculating an interval were repeated a very large number of times**.
 

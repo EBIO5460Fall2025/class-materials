@@ -12,7 +12,7 @@ RStudio.
 
 The sampling distribution is a frequentist conceptualization of our
 **big idea in data science** of **counting all the ways the data could
-have happened**. It is the key to understanding frequentist inference.
+have happened**. It’s the key to understanding frequentist inference.
 The sampling distribution is the distribution of a sample statistic from
 repeatedly sampling the population. There are two critical features of
 this frequentist conceptualization:
@@ -98,7 +98,7 @@ n_pop
     ## [1] 132
 
 This is a population statistic. The prevalence of the pathogen is
-another characteristic of this population; it is also a population
+another characteristic of this population; it’s also a population
 statistic. The pathogen prevalence of the population is
 
 ``` r
@@ -229,8 +229,8 @@ black line $\hat{\theta}$ in the figure above). What do we expect about
 the reliability of the sample prevalence as an estimate $\hat{\theta}$
 of the population prevalence $\theta$? To answer that question,
 frequentists turn to the **reliability of a procedure** for calculating
-an interval, what they call a **confidence interval**. It is called a
-confidence interval because it is about the confidence we have in the
+an interval, what they call a **confidence interval**. It’s called a
+confidence interval because it’s about the confidence we have in the
 procedure for calculating the interval.
 
 A 95% confidence interval is defined as:
@@ -243,7 +243,7 @@ A 95% confidence interval is defined as:
 This is often abbreviated to something like “there is a 0.95 probability
 that the interval contains the true value”, which is true only if we
 keep in mind the precise definition of probability as an imagined
-repeated procedure. It is common to reword it subtly as “there is a 0.95
+repeated procedure. It’s common to reword it subtly as “there is a 0.95
 probability that the true value is in the interval”, which seems the
 same as the previous abbreviated definition to most people (including
 me) since if “the interval contains the true value” then “the true value
@@ -410,9 +410,10 @@ sum(in_interval) / reps
     ## [1] 0.95616
 
 which is pretty close to the desired coverage of 0.95 and is indeed a
-bit conservative since it is greater than 0.95 (i.e. our procedure
-produces a 95.6% confidence interval). Let’s see the first 100 of these
-intervals compared to the true pathogen prevalence (in blue):
+bit conservative since it’s greater than 0.95 (i.e. our procedure
+produces a 95.6% confidence interval, which is bit wider than a 95%
+confidence interval). Let’s see the first 100 of these intervals
+compared to the true pathogen prevalence (in blue):
 
 ``` r
 nd <- 100 #number of intervals to draw
@@ -433,12 +434,19 @@ Several things are apparent.
     random variables.
 2.  The intervals are of different widths.
 3.  As expected, about 5 out of 100 (here 6) of the intervals (orange)
-    don’t cover the true value.
+    don’t cover the true value (blue).
 4.  The true value is often not near the center of the interval.
 5.  Many of the intervals include prevalences that are impossible,
     either negative, or greater than one. This is a consequence of
     substituting the Normal distribution for the true sampling
     distribution.
+
+Finally, a reminder that the above is to demonstrate that any reasonable
+procedure can be used to construct an interval. The defining feature of
+a confidence interval is its coverage determined by the coverage
+algorithm. Our procedure works quite well within the realm we tested it
+but there are better procedures for constructing intervals for the kind
+of data presented (binomial proportion).
 
 ## Summary
 
@@ -454,7 +462,7 @@ Several things are apparent.
         calculate the sample statistic
     plot sampling distribution (histogram) of the sample statistic
 
-- A confidence interval is:
+- A 95% confidence interval is:
 
 > An interval calculated by some procedure that would **contain** (or
 > **cover**) the true population value 95% of the time, **if sampling
