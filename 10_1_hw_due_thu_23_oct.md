@@ -35,18 +35,25 @@ Use the following strategy:
 
 **Push your code to GitHub**
 
+#### 2. Video coding demonstration: Beetle sampling distribution
 
-#### 2. Reading: sampling distribution
+Finishing off the coding exercise from Thursday's class.
 
-Read two pieces about the sampling distribution, the foundation of frequentist inference, and how that is applied by `lm()`. These are best read in the markdown `.md` format on GitHub (in your browser) because the equations and so on will render nicely there. The markdown version was generated from the code in the `.Rmd` file. You can explore the code from the `.Rmd` version from within Positron (or R Studio).
+* [09_7_beetle_sampling_distribution.R](09_7_beetle_sampling_distribution.R)
+* [09_7_video_beetle_sampling_distribution.md](09_7_video_beetle_sampling_distribution.md)
 
-   * [10_2_sampling_distribution.md](10_2_sampling_distribution.md)
-   * [10_3_lm_ssq_inference.md](10_3_lm_ssq_inference.md)
+#### 3. Reading & video lecture: sampling distribution and coverage algorithm
 
+Read an example about using the sampling distribution for frequentist inference, applied to confidence intervals. This is best read in the markdown `.md` format on GitHub (in your browser) because the equations and so on will render nicely there. The markdown version was generated from the code in the `.Rmd` file. You can explore the code from the `.Rmd` version from within Positron (or R Studio).
 
-#### 3. Video lecture: frequentist inference algorithms in lm()
+Watch the video for this example. See also associated slides.
 
-   * [10_4_slides_lm_inference_algos.pdf](10_4_slides_lm_inference_algos.pdf)
-   * [10_4_video_lm_inference_algos.md](10_4_video_lm_inference_algos.md) - 11 mins
+   * [10_2_sampling_distribution_CI_coverage.md](10_2_sampling_distribution_CI_coverage.md) - reading/code
+   * [10_3_slides_sampling distribution_CI_coverage.pdf](10_3_slides_sampling_distribution_CI_coverage.pdf)
+   * [10_3_video_sampling_distribution_CI_coverage.md](10_3_video_sampling_distribution_CI_coverage.md)
+
+#### 4. Frequentist inference algorithms in lm()
+
+TBA
 
 
