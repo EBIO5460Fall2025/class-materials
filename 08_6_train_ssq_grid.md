@@ -31,7 +31,7 @@ Reference for the numpy library
 * [Math](https://numpy.org/doc/stable/reference/routines.math.html)
 
 
-We'll need to read in data. Use numpy to read in a CSV (comma separate values) file
+We'll need to read in data. Use numpy to read in a CSV (comma separated values) file.
 
 ```python
 data = np.loadtxt("xy_data.csv", delimiter=",", skiprows=1)  # skip header row (can't mix types)
