@@ -8,6 +8,7 @@
 
 !dna_sequences.RData
 scratch.*
+.vscode/
 
 #########################################################
 # These were added by R studio to ignore key R and
