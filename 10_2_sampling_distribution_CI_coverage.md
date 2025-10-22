@@ -3,10 +3,10 @@ Frequentist inference algorithm
 Brett Melbourne
 2025-10-17
 
-Note: The `.md` version of this document is best for viewing on GitHub.
-See the `.Rmd` version for the latex equation markup. The `.Rmd` version
-does not display the plots in GitHub and is best for viewing within
-RStudio.
+> Note: The `.md` version of this document is best for viewing on
+> GitHub. See the `.Rmd` version for the latex equation markup. The
+> `.Rmd` version does not display the plots in GitHub and is best for
+> viewing within RStudio.
 
 ## The sampling distribution: how frequentists count the ways data could have happened
 
@@ -66,8 +66,8 @@ know reality because we program it in, so simulation is very useful for
 gaining better intuition about the concept of the sampling distribution.
 So let’s explore the sampling distribution by simulation. We’ll consider
 two cases, estimating the prevalence of a pathogen in a population
-(below), and an hypothesis test for the slope in simple linear
-regression (see the next installment: `lm_ssq_inference.md`).
+(below), and estimating the slope in simple linear regression (see the
+next installment: `linear_model_sampling_distribution.md`).
 
 ### Pathogen prevalence in a population
 
@@ -116,11 +116,11 @@ histogram.
 
 ``` r
 hist(pathogen, breaks=seq(-0.5,1.5,1), xlab="Pathogen status (not infected=0, infected=1)",
-     main=NA, col="#56B4E9", xaxt="none", freq=FALSE)
+     main=NA, col="steelblue2", xaxt="none", freq=FALSE)
 axis(1, at=0:1)
 ```
 
-![](10_2_sampling_distribution_files/figure-gfm/unnamed-chunk-4-1.png)<!-- -->
+![](10_2_sampling_distribution_CI_coverage_files/figure-gfm/unnamed-chunk-4-1.png)<!-- -->
 
 Now, let’s assume we are in the typical scientific situation of
 incomplete knowledge. For example, we do not have data on the infection
@@ -181,22 +181,22 @@ Here’s the histogram representing the true sampling distribution for
 pathogen prevalence
 
 ``` r
-hist(pathogen_p_imagine_samples, breaks=seq(-0.05, 1.05, 0.1), col="#56B4E9", freq=FALSE,
+hist(pathogen_p_imagine_samples, breaks=seq(-0.05, 1.05, 0.1), col="steelblue2", freq=FALSE,
      xlab="Pathogen prevalence", main=NA, ylim=c(0,2.7))
-abline(v=pathogen_p_pop, col="#E69F00", lwd=2)
+abline(v=pathogen_p_pop, col="goldenrod2", lwd=2)
 abline(v=pathogen_p_sample, lwd=2, lty=2)
 text(pathogen_p_pop, 2.68, expression(italic(theta)), pos=4)
 text(pathogen_p_sample, 2.68, expression(hat(italic(theta))), pos=2)
 ```
 
-![](10_2_sampling_distribution_files/figure-gfm/unnamed-chunk-7-1.png)<!-- -->
+![](10_2_sampling_distribution_CI_coverage_files/figure-gfm/unnamed-chunk-7-1.png)<!-- -->
 
 Keep in mind that this histogram is the “true” sampling distribution for
 the pathogen prevalence given a sample of 10 individuals from the
 population. That’s because we sampled from the true population, which we
 know exactly because the truth is coded into our simulation. Because we
 are drawing samples of 10, the possible prevalences are from 0 to 1 in
-steps of 0.1. The true prevalence, $\theta$ is the orange solid line at
+steps of 0.1. The true prevalence, $\theta$ is the gold solid line at
 0.424. The mean prevalence of this sampling distribution is the same as
 the true prevalence of the population (if we increase the number of
 samples toward infinity it will match exactly), telling us that the
@@ -278,19 +278,19 @@ approximation. Here they are side by side and overlaid:
 
 ``` r
 par(mfrow=c(1,3))
-hist(pathogen_p_imagine_samples, breaks=seq(-0.45, 1.35, 0.1), col="#56B4E9", freq=FALSE,
+hist(pathogen_p_imagine_samples, breaks=seq(-0.45, 1.35, 0.1), col="steelblue2", freq=FALSE,
      xlab="Pathogen prevalence", ylim=c(0,2.7), main="True sampling distribution")
 sd_samp <- sd(pathogen_p_imagine_samples) #standard deviation of the true sampling distribution 
 pathogen_p_normal_samples <- rnorm(1e6, pathogen_p_pop, sd_samp)
-hist(pathogen_p_normal_samples, breaks=seq(-0.45,1.35,0.05), col="#56B4E9", freq=FALSE,
+hist(pathogen_p_normal_samples, breaks=seq(-0.45,1.35,0.05), col="steelblue2", freq=FALSE,
      xlab="Pathogen prevalence", ylim=c(0,2.7), main="Approximating Normal")
-hist(pathogen_p_imagine_samples, breaks=seq(-0.45,1.35,0.1), col="#56B4E9", freq=FALSE,
+hist(pathogen_p_imagine_samples, breaks=seq(-0.45,1.35,0.1), col="steelblue2", freq=FALSE,
      xlab="Pathogen prevalence", ylim=c(0,2.7), main="Normal overlaid on true")
 lines(seq(-0.45, 1.35, 0.01), dnorm(seq(-0.45, 1.35, 0.01), mean=pathogen_p_pop,
-      sd=sd_samp), col="#E69F00")
+      sd=sd_samp), col="goldenrod2")
 ```
 
-![](10_2_sampling_distribution_files/figure-gfm/unnamed-chunk-9-1.png)<!-- -->
+![](10_2_sampling_distribution_CI_coverage_files/figure-gfm/unnamed-chunk-9-1.png)<!-- -->
 
 Here, the parameters of the approximating Normal distribution are the
 mean and standard deviation of the true sampling distribution. One issue
@@ -310,13 +310,13 @@ the graph below). Let’s magnify the approximating Normal distribution
 
 ``` r
 par(mfrow=c(1,1))
-hist(pathogen_p_normal_samples, breaks=seq(-0.45, 1.35, 0.05), col="#56B4E9", freq=FALSE,
+hist(pathogen_p_normal_samples, breaks=seq(-0.45, 1.35, 0.05), col="steelblue2", freq=FALSE,
      xlab="Pathogen prevalence", ylim=c(0,2.9), main=NA)
-abline(v=pathogen_p_pop, col="#E69F00", lwd=4)
+abline(v=pathogen_p_pop, col="goldenrod2", lwd=4)
 text(pathogen_p_pop,2.9, "True", pos=4)
 text(pathogen_p_pop,2.7, "prevalence", pos=4)
-abline(v=pathogen_p_pop+2*sd_samp, col="#E69F00", lty=2)
-abline(v=pathogen_p_pop-2*sd_samp, col="#E69F00", lty=2)
+abline(v=pathogen_p_pop+2*sd_samp, col="goldenrod2", lty=2)
+abline(v=pathogen_p_pop-2*sd_samp, col="goldenrod2", lty=2)
 
 #upper unusual value
 points(pathogen_p_pop+2*sd_samp, 1.5, col="#D55E00", pch=16)
@@ -335,7 +335,7 @@ text(pathogen_p_pop-2*sd_samp-0.45, 1.97, "Unlikely low", pos=4)
 text(pathogen_p_pop-2*sd_samp-0.45, 1.83, "sample prevalence", pos=4)
 ```
 
-![](10_2_sampling_distribution_files/figure-gfm/unnamed-chunk-10-1.png)<!-- -->
+![](10_2_sampling_distribution_CI_coverage_files/figure-gfm/unnamed-chunk-10-1.png)<!-- -->
 
 Now, in our scientific scenario we don’t know the true pathogen
 prevalence, so we don’t know where the prevalence of our one sample lies
@@ -411,7 +411,7 @@ sum(in_interval) / reps
 
 which is pretty close to the desired coverage of 0.95 and is indeed a
 bit conservative since it’s greater than 0.95 (i.e. our procedure
-produces a 95.6% confidence interval, which is bit wider than a 95%
+produces a 95.6% confidence interval, which is a little wider than a 95%
 confidence interval). Let’s see the first 100 of these intervals
 compared to the true pathogen prevalence (in blue):
 
@@ -419,21 +419,21 @@ compared to the true pathogen prevalence (in blue):
 nd <- 100 #number of intervals to draw
 plot(NA, NA, ylim=c(-0.1,1.1), xlim=c(1,nd), type="n", 
      ylab="Pathogen prevalence", xlab="", axes=FALSE)
-abline(h=pathogen_p_pop, col="#56B4E9")
-intcol <- ifelse(in_interval, "gray", "#E69F00")
+abline(h=pathogen_p_pop, col="steelblue2")
+intcol <- ifelse(in_interval, "gray", "goldenrod2")
 segments(1:nd, interval[1:nd,1], 1:nd, interval[1:nd,2], col=intcol)
 axis(2)
 box()
 ```
 
-![](10_2_sampling_distribution_files/figure-gfm/unnamed-chunk-12-1.png)<!-- -->
+![](10_2_sampling_distribution_CI_coverage_files/figure-gfm/unnamed-chunk-12-1.png)<!-- -->
 
 Several things are apparent.
 
 1.  The location of the intervals varies a lot. Confidence intervals are
     random variables.
 2.  The intervals are of different widths.
-3.  As expected, about 5 out of 100 (here 6) of the intervals (orange)
+3.  As expected, about 5 out of 100 (here 6) of the intervals (gold)
     don’t cover the true value (blue).
 4.  The true value is often not near the center of the interval.
 5.  Many of the intervals include prevalences that are impossible,
