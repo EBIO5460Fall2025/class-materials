@@ -1,0 +1,123 @@
+Algorithm for bootstrapped prediction intervals
+================
+Brett Melbourne
+25 Sep 2024
+
+## Accounting for both parameter uncertainty and the data generating process
+
+So far we’ve seen bootstrapped confidence intervals for the mean of a
+derived quantity, using the example of y\|x (aka the line), which are
+based on the sampling distribution for y\|x. The sampling distribution
+measures the uncertainty in y that is due to parameter uncertainty. When
+our goal is to predict the likely value of a new observation of y
+(i.e. new data), we also need to account for the data generating
+process. The bootstrap algorithm can do this in a very general way that
+can be **applied to any model**. We take the basic bootstrap we used for
+confidence intervals (estimating the parameter uncertainty) but now add
+the data generating process (DGP) to simulate new values of y at each
+iteration. In this way, we build a sampling distribution for a new data
+point, y, that accounts for both parameter uncertainty and uncertainty
+due to the data generating process.
+
+## Preliminaries
+
+First we’ll generate some fake data for illustration, using the same
+data as before. We’ll pretend that these were the data we collected
+(i.e. our one dataset in hand) and that we don’t know the true state of
+the world. All the information we have is this one dataset.
+
+``` r
+set.seed(4.6) #make example reproducible
+beta_0 <- 20 #true y intercept
+beta_1 <- 10 #true slope
+sigma_e <- 20  #true standard deviation of the errors
+n <- 30  #size of dataset
+x <- seq(0, 25, length.out=n)   #independent variable, fixed values
+y <- beta_0 + beta_1 * x + rnorm(n, sd=sigma_e) #random sample of y from the population
+df <- data.frame(x, y)
+```
+
+And then we’ll train the model
+
+``` r
+fit <- lm(y ~ x, data=df)
+```
+
+## Parametric bootstrapped prediction interval
+
+Here is the algorithm:
+
+    define a grid of new x values to predict y
+    repeat very many times
+        sample from the error distribution of DGP
+        simulate new y-values from the original estimated parameters of model
+        train the model to estimate the parameters
+        keep: simulate new data y|x using estimated parameters
+    calculate quantiles of the generated data distributions
+    plot quantiles with the data
+
+``` r
+reps <- 10000 #increase this for smoother PI curves
+boot_beta0 <- rep(NA, reps)
+boot_beta1 <- rep(NA, reps)
+df_boot <- df #data frame
+
+# Estimate of sigma_e (see previous scripts for explanation)
+var_e_hat <- sum(fit$residuals ^ 2) / fit$df.residual
+sigma_e_hat <- sqrt(var_e_hat)
+
+# Set up grid of x values for simulated y's, and storage for new y's
+xx <- seq(min(df$x), max(df$x), length.out=100)
+y_sim <- matrix(NA, nrow=reps, ncol=length(xx))
+
+# Bootstrap realizations
+for ( i in 1:reps ) {
+    
+    # Sample errors from the Normal distribution
+    e_boot <- rnorm(n, 0, sigma_e_hat)
+    
+    # Simulate new y-values at the original x values
+    df_boot$y <- coef(fit)[1] + coef(fit)[2] * df_boot$x + e_boot
+    
+    # Train the linear model (or insert any model here)
+    fit_boot <- lm(y ~ x, data=df_boot)
+    
+    # Generate data from the trained model, one point per x value
+    # To do this, we need to estimate sigma_e from the bootstrap trained model
+    var_e_hat <- sum(fit_boot$residuals ^ 2) / fit_boot$df.residual
+    boot_sigma_e_hat <- sqrt(var_e_hat)
+    e_sim <- rnorm(length(xx), 0, boot_sigma_e_hat)
+    y_sim[i,] <- coef(fit_boot)[1] + coef(fit_boot)[2] * xx + e_sim
+}
+
+# Calculate percentiles for generated y data
+pi_upper <- rep(NA, length(xx))
+pi_lower <- rep(NA, length(xx))
+for ( j in 1:length(xx) ) {
+    pi_upper[j] <- quantile(y_sim[,j], prob=0.975)
+    pi_lower[j] <- quantile(y_sim[,j], prob=0.025)
+}
+
+# Plot model fit with bootstrapped 95% prediction intervals
+yupr <- max(pi_upper)
+ylwr <- min(pi_lower)
+with(df, plot(x, y, ylim=c(ylwr,yupr)))
+abline(fit, col="steelblue2")
+lines(xx, pi_upper, col="grey", lty=2)
+lines(xx, pi_lower, col="grey", lty=2)
+```
+
+![](10_8_bootstrap_prediction_interval_files/figure-gfm/unnamed-chunk-3-1.png)<!-- -->
+
+## Summary
+
+Prediction intervals quantify the uncertainty of a prediction about a
+new data point. Bootstrap simulation is a powerful and general way to
+propagate uncertainty into predictions of new data points. The algorithm
+adds just one line of pseudocode to the bootstrap sampling distribution
+algorithm. We collect simulated data points.
+
+The code above is self contained to produce only prediction intervals
+but this extra step can be added to code that also collects bootstrap
+samples of parameter estimates and derived quantities, and confidence
+intervals.
