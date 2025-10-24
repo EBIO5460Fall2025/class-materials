@@ -10,7 +10,7 @@ Pronouns: he, him, his\
 Location: Ramaley N183, Tue/Thu 3:30 - 4:45\
 **Zoom 944 3049 7046**, as needed, and for office hours (log in with CU account)\
 [Piazza](https://piazza.com/colorado/fall2025/ebio5460002/home): Get help, ask and answer questions, discuss topics\
-[Google Drive]() (TBA): texts and reading that are not open access, collaborative notes etc\
+[Google Drive](https://drive.google.com/drive/folders/1t418DW77_pnFPG5BE3ZyGMmIEuKQ5qCp?usp=sharing): texts and reading that are not open access\
 [Class recordings](https://www.dropbox.com/scl/fo/85lfa1ia8art02671njou/AA3Irw_z1RNaRSNYOl2EQLY?rlkey=sn35qaqxdkah1op66mv8by229&st=5praf8lw&dl=0): password required, by request
 
 This repository includes lecture slides (pdf), code, and homework instructions. For the most part, where code is concerned you want to view the markdown (.md) files in your web browser from GitHub.com. These markdown files are more readable and are compiled from the corresponding R or Python literate programming scripts. You can also run the R or Python code on your computer from the .R or .py files. For C code, you'll need to compile it to run.
