@@ -279,8 +279,8 @@ ggplot(preds) +
     geom_line(aes(x=latitude, y=ppdlo95, col=habitat), lty=2) +
     geom_line(aes(x=latitude, y=ppdhi95, col=habitat), lty=2) +
     geom_point(data=ant, aes(x=latitude, y=richness, col=habitat)) +
-    annotate("text", x=42.7, y=3.3, label="Bog", col=bfc[1]) +
-    annotate("text", x=43.85, y=9.5, label="Forest", col=bfc[2]) +
+    annotate("text", x=43.6, y=3, label="Bog", col=bfc[1]) +
+    annotate("text", x=43.6, y=8.5, label="Forest", col=bfc[2]) +
     scale_fill_manual(values=bfc) +
     scale_color_manual(values=bfc) +
     scale_y_continuous(breaks=seq(0, 24, 4), minor_breaks=seq(0, 24, 2)) +
@@ -289,6 +289,8 @@ ggplot(preds) +
     ylab("Ant species richness") +
     theme(legend.position="none")
 
+# Shaded areas are 95% credible intervals for the mean. Dashed lines are 95%
+# prediction intervals.
 
 # How different is species richness between habitats?
 
