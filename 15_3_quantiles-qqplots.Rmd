@@ -14,11 +14,11 @@ Here is the cumulative distribution function (cdf) for the standard Normal distr
 
 ```{r}
 x <- seq(-3, 3, length.out=100)
-plot(x, pnorm(x), type="l", col="red", main="Cumulative distribution function")
+plot(x, pnorm(x), type="l", col="goldenrod2", main="Cumulative distribution function")
 axis(2, at=seq(0, 1, by=0.1), labels=FALSE, tcl=-0.25)
 ```
 
-Quantiles are the inverse of this function. What is the value of x for which the cumulative probability is p? For example, what value of x are 80% of the values expected to be less than?
+Quantiles are the inverse of this function: the value of x for which the cumulative probability is p. For example, what value of x is 80% of the values of x expected to be less than? The quantile is given by `qnorm()`.
 
 ```{r}
 p <- 0.80
@@ -30,10 +30,10 @@ We say that 0.8416 is the quantile for p = 0.8.
 We could alternatively read the quantile off the graph of the cdf
 
 ```{r}
-plot(x, pnorm(x), type="l", col="red", main="Cumulative distribution function")
+plot(x, pnorm(x), type="l", col="goldenrod2", main="Cumulative distribution function")
 axis(2, at=seq(0, 1, by=0.1), labels=FALSE, tcl=-0.25)
-segments(-4, p, qnorm(p), p, col="blue")
-segments(qnorm(p), -0.1, qnorm(p), p, col="blue")
+segments(-4, p, qnorm(p), p, col="steelblue2")
+segments(qnorm(p), -0.1, qnorm(p), p, col="steelblue2")
 text(qnorm(p), 0, labels=signif(qnorm(p), 4), pos=4)
 ```
 
@@ -54,7 +54,7 @@ Yes, that's about right.
 
 ### Procedure for constructing a QQ plot
 
-The basic idea of a QQ plot is to plot the empirical quantiles (i.e. from the data) against the theoretical quantiles of the distribution in question (e.g. Normal, Poisson, etc).
+The basic idea of a QQ (quantile-quantile) plot is to plot the empirical quantiles (i.e. from the data) against the theoretical quantiles of the distribution in question (e.g. Normal, Poisson, etc).
 
 Let's say we have some data, y. We'll imagine these are real data from now on. It's a small dataset, say 20 points.
 
@@ -87,11 +87,11 @@ cbind(p, q)             #The probabilities with their quantiles
 The relationship between p and the ordered y (i.e. q) is the empirical cdf
 
 ```{r}
-plot(q, p, type="l", col="red", main="Empirical cdf (red line)")
+plot(q, p, type="l", col="goldenrod2", main="Empirical cdf (golden line)")
 axis(2, at=seq(0, 1, by=0.1), labels=FALSE, tcl=-0.25)
 for ( i in 1:n ) {
-    segments(-4, p[i], q[i], p[i], col="blue")
-    segments(q[i], -0.1, q[i], p[i], col="blue")    
+    segments(-4, p[i], q[i], p[i], col="steelblue2")
+    segments(q[i], -0.1, q[i], p[i], col="steelblue2")    
 }
 ```
 
@@ -105,12 +105,12 @@ qth #The theoretical quantiles
 And we can plot those on the theoretical cdf
 
 ```{r}
-plot(x, pnorm(x), type="l", col="red", ylab="p",
-     main="Theoretical cdf (red curve)")
+plot(x, pnorm(x), type="l", col="goldenrod2", ylab="p",
+     main="Theoretical cdf (golden curve)")
 axis(2, at=seq(0, 1, by=0.1), labels=FALSE, tcl=-0.25)
 for ( i in 1:n ) {
-    segments(-4, p[i], qth[i], p[i], col="blue")
-    segments(qth[i], -0.1, qth[i], p[i], col="blue")    
+    segments(-4, p[i], qth[i], p[i], col="steelblue2")
+    segments(qth[i], -0.1, qth[i], p[i], col="steelblue2")    
 }
 ```
 
