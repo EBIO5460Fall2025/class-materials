@@ -147,3 +147,17 @@ text(51, dppc[51], "51", cex=0.8, pos=4)
 
 mtext("Influence - case deletion diagnostics", 3, -2.5, outer=TRUE)
 
+# Conclusions
+
+# We investigated the potential outlier and didn't find any mistakes in the
+# laboratory procedures or data handling. Taken together with the residual
+# plot, it seems that the negative binomial model is not a good approximation
+# for these data.
+
+# We ultimately concluded that a negative binomial model is a poor model for the
+# data generating process in population dynamics of sexually reproducing species
+# with discrete life histories. We devised a better stochastic model for the
+# data generating process by modeling the stochastic ecological processes in
+# more realistic detail. It turned out that at small population sizes, variation
+# among individuals in birth rates and the probability of being female mattered
+# a lot.
