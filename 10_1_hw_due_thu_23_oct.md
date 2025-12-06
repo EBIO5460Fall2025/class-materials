@@ -1,4 +1,19 @@
-#### 1. Descent and grid search algorithms with an ecological model
+# Homework
+
+**Due:** Thursday 23 Oct 3:30 PM
+
+**Grading criteria:** Complete the code in Q1. On time submission.
+
+**Format for submitting solutions:**
+
+* Submit one file of R code
+* The filename should be `train_ecological_model.R` but you can add any prefixes to the filenames that work with your file naming scheme. 
+
+**Push your file to your GitHub repository**
+
+
+
+## 1. Descent and grid search algorithms with an ecological model
 
 We just looked at SSQ training algorithms applied to a linear model (aka linear regression). Among the [three data science cultures](01_1_slides_thu_intro_welcome.pdf), this was an example of the **generative modeling culture**, which emphasizes generic models and phenomenological algorithms such as linear regression. We'll now apply these training algorithms to an ecological model, an example from the **natural processes culture** of data science, which emphasizes mechanistic models for the data generating process.
 
@@ -33,16 +48,16 @@ Use the following strategy:
 * Check that it is robust (finds the same minimum) by trying different starting points for the parameters
 * Use a grid search to inspect the profiles of the SSQ surface near the optimum parameters
 
-**Push your code to GitHub**
 
-#### 2. Video coding demonstration: Beetle sampling distribution
+
+## 2. Video coding demonstration: Beetle sampling distribution
 
 Finishing off the coding exercise from Thursday's class.
 
 * [09_7_beetle_sampling_distribution.R](09_7_beetle_sampling_distribution.R)
 * [09_7_video_beetle_sampling_distribution.md](09_7_video_beetle_sampling_distribution.md)
 
-#### 3. Reading & video lecture: sampling distribution and coverage algorithm
+## 3. Reading & video lecture: sampling distribution and coverage algorithm
 
 Read an example about using the sampling distribution for frequentist inference, applied to confidence intervals. This is best read in the markdown `.md` format on GitHub (in your browser) because the equations and so on will render nicely there. The markdown version was generated from the code in the `.Rmd` file. You can explore the code from the `.Rmd` version from within Positron (or R Studio).
 
@@ -52,8 +67,5 @@ Watch the video for this example. See also associated slides.
    * [10_3_slides_sampling distribution_CI_coverage.pdf](10_3_slides_sampling_distribution_CI_coverage.pdf)
    * [10_3_video_sampling_distribution_CI_coverage.md](10_3_video_sampling_distribution_CI_coverage.md)
 
-#### 4. Frequentist inference algorithms in lm()
-
-TBA
 
 
