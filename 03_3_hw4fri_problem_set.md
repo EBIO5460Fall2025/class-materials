@@ -1,4 +1,4 @@
-#### Programming problems on selection structures
+# Programming problems on selection structures
 
 **Due:** Friday 5 Sep 11:59 PM
 
@@ -19,7 +19,7 @@ git push
 
 
 
-**Learning goals:**
+## Learning goals
 
 * Practice writing selection structures
 * Analyze the program flow of algorithms
@@ -39,7 +39,7 @@ You must not use any R or Python packages/libraries for these problems, only str
 
 
 
-##### Single selection structure
+## Single selection structure
 
 ```R
 # R
@@ -56,7 +56,7 @@ if condition:
 
 
 
-**Question 1**
+### Question 1
 
 Write an R selection structure that will change the status of migrate to TRUE if day length is greater than 11. Regardless, migration state should be printed at the end.
 
@@ -69,7 +69,7 @@ print(migrate)
 
 
 
-**Question 2**
+### Question 2
 
 Write a Python selection structure that will print "Time to fly away!" if the status of migrate is True.
 
@@ -80,7 +80,7 @@ migrate = True
 
 
 
-##### Question 3
+### Question 3
 
 What goes wrong with the following R code and why? (Provide your answer as a comment). Fix the code.
 
@@ -93,7 +93,7 @@ if ( temperature < -2 )
 
 
 
-##### Question 4
+### Question 4
 
 What goes wrong with the following Python code and why? (Provide your answer as a comment). Fix the code.
 
@@ -106,7 +106,7 @@ print("Plant mortality likely")
 
 
 
-##### Question 5
+### Question 5
 
 Why doesn't the following R code work as intended?  Provide your answer as a comment. Fix the code while **retaining the single selection structures**.
 
@@ -127,7 +127,7 @@ if ( fire_possible ) {
 
 
 
-##### Double selection structure
+## Double selection structure
 
 ```R
 # R
@@ -138,7 +138,7 @@ if ( condition ) {
 }
 ```
 
-##### 
+
 
 ```python
 # Python
@@ -150,13 +150,13 @@ else:
 
 
 
-##### Question 6
+### Question 6
 
 Fix the algorithm in (Q5) using a double selection structure but provide Python code instead of R. Which option works best, stacked single selection structures or a double selection structure, and why? (Provide your answer as a comment).
 
 
 
-##### Question 7
+### Question 7
 
 Fix the following R code
 
@@ -171,7 +171,7 @@ print("Dominant")
 
 
 
-##### Multiple selection structure
+## Multiple selection structure
 
 ```R
 # R
@@ -196,7 +196,7 @@ else:
 
 
 
-**Question 8**
+### Question 8
 
 Write a selection structure in R that will print the type of species based on the input trophic level.
 
@@ -209,11 +209,11 @@ Write a selection structure in R that will print the type of species based on th
 
 
 
-**Nested selection structures**
+## Nested selection structures
 
 
 
-**Question 9**
+### Question 9
 
 An amphibian prefers wet habitats, but only if temperature is also above 15°C. Write a selection structure in Python that will print one of "Habitat suitable", "Habitat too cold", "Habitat too dry" depending on the combination of environmental conditions.
 
@@ -226,7 +226,7 @@ temp = 16
 
 
 
-##### Question 10
+### Question 10
 
 Where should I put indents? Modify the following code to produce the patterns shown in tables (a) and (b) depending on the input. You may not make any changes other than adding spaces. Hint: decide when to stack or nest the selection structures.
 
