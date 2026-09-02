@@ -17,8 +17,9 @@ This repository includes lecture slides (pdf), code, and homework instructions. 
 
 This is the first semester in a four-semester, PhD-level **Data Science for Ecology** sequence:
 * Semester 1: Fundamentals of Data Science for Ecology and Evolution
-* Semester 2: [Machine Learning for Ecology and Evolution](https://github.com/EBIO5460Spring2025/class-materials)
-* Semester 3: Process Modeling with Data for Ecology and Evolution
+* Semester 2: [Machine Learning for Ecology and Evolution](https://github.com/EBIO5460Spring2026/class-materials)
+* Semester 3: [Process Modeling with Data for Ecology and Evolution](https://github.com/EBIO5460Fall2026/class-materials)
 * Semester 4: Hierarchical models for Ecology and Evolution
+More information on the 4 semester sequence is [here](https://www.colorado.edu/lab/melbourne/courses).
 
-This first semester introduces all the fundamental skills and concepts, with examples from topics in later semesters. The previous iteration was [Data Science for Biological Research](https://github.com/EBIO5460Fall2024/class-materials). However, this Spring 2025 is a major revision focusing on covering all the fundamentals, introducing new tooling (Positron, Quarto), expanding to multiple languages (C, Python, R), and expanding on data generating processes and data simulation as the foundation of data science in science.
+This first semester introduces all the fundamental skills and concepts, with examples from topics in later semesters. Spring 2025 was a major revision focusing on covering all the fundamentals, introducing new tooling (Positron, Quarto), expanding to multiple languages (C, Python, R), and expanding on data generating processes and data simulation as the foundation of data science in science.
